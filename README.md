@@ -19,5 +19,7 @@ java -jar <jar file>
 ```
 
 ## TODO
-- Fix clear and test on Linux/Windows
+- Test Windows clear
+- .JAR to .EXE convert
 - Implement Gauss Jordan elimination
+- Improve imports to make .jar smaller

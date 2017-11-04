@@ -1,20 +1,32 @@
-import settings.Settings.version
+import settings.Settings.{version, maximumElements}
+import utils.FileHandler
+
 import sys.process._
-import java.io.IOException
 
 
-object Main extends App{
+object Main extends App {
 
-//TODO Solve clear screen problem
-  //System.out.print("\033[H\033[2J")
-  //object Cls extends App {print("\033[2J")}
-  //val clear = "clear" !
+  val clear = "clear" !
   //val clear = "cls" !
 
-  printf("\nEEL525 - Electric Circuits II\n")
-  printf("by Matheus Hoffmann Fernandes Santos - hoffmann@poli.ufrj.br\n")
-  printf("Circuit Analysis in the time domain containing liner/nonlinear components\n")
-  printf(s"Version -> $version\n")
-  printf("Insert NetList file: example.net\n")
+  println("EEL525 - Electric Circuits II")
+  println("Developed by Matheus Hoffmann - hoffmann@poli.ufrj.br")
+  println("Circuit Analysis in the time domain containing liner/nonlinear components")
+  println(s"Version -> $version")
+  println("Insert NetList file (example.net):")
+
+  /**
+    * The file must be in the context path, not jar path
+    */
+  val fileNetList = scala.io.StdIn.readLine()
+
+  val numberOfElements = FileHandler.openFile(fileNetList).size
+
+  if (numberOfElements > maximumElements) {
+    println(s"Max elements reached, please enter a NetList with less than $maximumElements elements.")
+    sys.exit(1)
+  }
+
+
 
 }
