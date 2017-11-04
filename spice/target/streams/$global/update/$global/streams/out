@@ -1,0 +1,178 @@
+[info] Updating {file:/home/hoffmann/Desktop/Work/scala-akka-skeleton/}modulo...
+[debug] :: resolving dependencies :: com.nome.do.projeto#modulo;0.0.1
+[debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
+[debug] 	validate = true
+[debug] 	refresh = false
+[debug] resolving dependencies for configuration 'compile'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[info] Resolving org.scala-lang#scala-library;2.11.7 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@6968e6ce
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.7
+[debug] 	found org.scala-lang#scala-library;2.11.7 in sbt-chain
+[debug] 	[2.11.7] org.scala-lang#scala-library;2.11.7
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] resolving dependencies for configuration 'runtime'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [runtime]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] resolving dependencies for configuration 'test'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [test]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [runtime]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] resolving dependencies for configuration 'provided'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [provided]
+[debug] resolving dependencies for configuration 'optional'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [optional]
+[debug] resolving dependencies for configuration 'compile-internal'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile-internal]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [optional]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [provided]
+[debug] resolving dependencies for configuration 'runtime-internal'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [runtime-internal]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [runtime]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [optional]
+[debug] resolving dependencies for configuration 'test-internal'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [test-internal]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [test]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [runtime]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [optional]
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [provided]
+[debug] resolving dependencies for configuration 'plugin'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [plugin]
+[debug] resolving dependencies for configuration 'sources'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [sources]
+[debug] resolving dependencies for configuration 'docs'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [docs]
+[debug] resolving dependencies for configuration 'pom'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [pom]
+[debug] resolving dependencies for configuration 'scala-tool'
+[debug] == resolving dependencies for com.nome.do.projeto#modulo;0.0.1 [scala-tool]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->default]
+[info] Resolving org.scala-lang#scala-compiler;2.11.7 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.11.7 {scala-tool=[default, optional(default)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.11.7
+[debug] 	found org.scala-lang#scala-compiler;2.11.7 in sbt-chain
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->master(compile)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->default]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->optional(default)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-reflect;2.11.7 [compile->master(compile)]
+[info] Resolving org.scala-lang#scala-reflect;2.11.7 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.11.7 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.11.7
+[debug] 	found org.scala-lang#scala-reflect;2.11.7 in sbt-chain
+[debug] 	[2.11.7] org.scala-lang#scala-reflect;2.11.7
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-reflect;2.11.7 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->master(compile)]
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-reflect;2.11.7 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [compile->master(compile)]
+[info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.11;1.0.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
+[debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.4 in sbt-chain
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.4 [compile->master(compile)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [compile->master(compile)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.4 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [compile->compile]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.4 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->master(compile)]
+[info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
+[debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 in sbt-chain
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [compile->master(compile)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [compile->master(compile)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->compile]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-reflect;2.11.7 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang#scala-reflect;2.11.7 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [runtime->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->master]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->optional(default)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->jline#jline;2.12.1 [optional->master(compile)]
+[info] Resolving jline#jline;2.12.1 ...
+[debug] sbt-chain: Checking cache for: dependency: jline#jline;2.12.1 {optional=[compile(*), master(compile)]}
+[debug] sbt-chain: module revision found in cache: jline#jline;2.12.1
+[debug] 	found jline#jline;2.12.1 in sbt-chain
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->jline#jline;2.12.1 [optional->compile(*)]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [scala-tool->default]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [scala-tool->runtime]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [scala-tool->compile]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [scala-tool->master]
+[debug] == resolving dependencies com.nome.do.projeto#modulo;0.0.1->org.scala-lang#scala-library;2.11.7 [scala-tool->optional(default)]
+[debug] 	resolved ivy file produced in cache
+[debug] :: downloading artifacts ::
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.7!scala-library.jar
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.11.7!scala-compiler.jar
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.4!scala-xml_2.11.jar(bundle)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(bundle)
+[debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar
+[debug] :: resolution report :: resolve 620ms :: artifacts dl 13ms
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 compile produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-compile.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 runtime produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-runtime.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 test produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-test.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 provided produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-provided.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 optional produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-optional.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 compile-internal produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-compile-internal.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 runtime-internal produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-runtime-internal.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 test-internal produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-test-internal.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 plugin produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-plugin.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 sources produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-sources.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 docs produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-docs.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 pom produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-pom.xml
+[debug] 	report for com.nome.do.projeto#modulo;0.0.1 scala-tool produced in /home/hoffmann/Desktop/Work/scala-akka-skeleton/modulo/target/resolution-cache/reports/com.nome.do.projeto-modulo-scala-tool.xml
+[debug] 	resolve done (620ms resolve - 13ms download)
+[info] Done updating.
