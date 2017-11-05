@@ -3,7 +3,7 @@ package settings
 
 trait Settings {
 
-  val version: String = "0.0.1 - 04/11/2017"
+  val version: String = "0.0.2 - 05/11/2017"
 
   val maximumLines: Int = 80
   val maximumName: Int = 11

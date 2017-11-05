@@ -9,9 +9,6 @@ class FileHandler {
       Source.fromFile(fileName).getLines.toList
   }
 
-
-
-
 }
 
 object FileHandler extends FileHandler
