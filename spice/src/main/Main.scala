@@ -1,3 +1,5 @@
+package main
+
 /**
     _________             .__             _________      .__
    /   _____/ ____ _____  |  | _____     /   ___________ |__| ____  ____
@@ -13,12 +15,12 @@ GitHub: https://github.com/Hoffmannxd/scala-spice
 */
 
 
-import settings.Settings.{maximumElements, maximumName, maximumNodes, tolg, version}
-import utils.{FileHandler, Parser}
 import protocol.Protocols.Element
+import settings.Settings._
+import utils.{FileHandler, Parser}
 
 import scala.collection.mutable.ListBuffer
-import sys.process._
+import scala.sys.process._
 
 /**  === Elements indexing ===
   *  Resistor:                            R <name> <n+> <n-> <R>
@@ -95,6 +97,9 @@ object Main extends App {
 
     //TODO Check if really starts with null value || Init matrix need
   val admittanceMatrix = Array.ofDim[Double](maximumNodes+1, maximumNodes+2)
+  val currentCapacitorMatrix = Array.ofDim[Double](stepSize/stepsPerPoint+2, maximumNodes+1)
+
+
 
   listOfElements.foreach(element => {
     elementIterator += 1 //don't use netList(0)
@@ -120,19 +125,39 @@ object Main extends App {
         netList(elementIterator).nodes.nodeA += Number(Parser.getParameters(element)(1))
         netList(elementIterator).nodes.nodeB += Number(Parser.getParameters(element)(2))
         netList(elementIterator).nodes.nodeC += Number(Parser.getParameters(element)(3))
-        netList(elementIterator).nodes.nodeD += Number(Parser.getParameters(element)(5))
-        netList(elementIterator).values.head += Parser.getParameters(element)(6)
+        netList(elementIterator).nodes.nodeD += Number(Parser.getParameters(element)(4))
+        netList(elementIterator).values.head += Parser.getParameters(element)(5)
 
-      case x if x == 'O' =>
+      case 'O' =>
         netList(elementIterator).`type` += element(0)
         netList(elementIterator).name += Parser.getParameters(element)(0)
         netList(elementIterator).nodes.nodeA += Number(Parser.getParameters(element)(1))
         netList(elementIterator).nodes.nodeB += Number(Parser.getParameters(element)(2))
         netList(elementIterator).nodes.nodeC += Number(Parser.getParameters(element)(3))
-        netList(elementIterator).nodes.nodeD += Number(Parser.getParameters(element)(5))
+        netList(elementIterator).nodes.nodeD += Number(Parser.getParameters(element)(4))
 
       case '$' =>
+        netList(elementIterator).`type` += element(0)
+        netList(elementIterator).name += Parser.getParameters(element)(0)
+        netList(elementIterator).nodes.nodeA += Number(Parser.getParameters(element)(1))
+        netList(elementIterator).nodes.nodeB += Number(Parser.getParameters(element)(2))
+        netList(elementIterator).nodes.nodeC += Number(Parser.getParameters(element)(3))
+        netList(elementIterator).nodes.nodeD += Number(Parser.getParameters(element)(4))
+        netList(elementIterator).values.head += Parser.getParameters(element)(5)
+        netList(elementIterator).values(1) += Parser.getParameters(element)(6)
+        netList(elementIterator).values(2) += Parser.getParameters(element)(7)
 
+      case 'N' =>
+        netList(elementIterator).`type` += element(0)
+        netList(elementIterator).name += Parser.getParameters(element)(0)
+        netList(elementIterator).nodes.nodeA += Number(Parser.getParameters(element)(1))
+        netList(elementIterator).nodes.nodeB += Number(Parser.getParameters(element)(2))
+        netList(elementIterator).values.head += Parser.getParameters(element)(3)
+        netList(elementIterator).values(1) += Parser.getParameters(element)(4)
+        netList(elementIterator).values(2) += Parser.getParameters(element)(5)
+        netList(elementIterator).values(3) += Parser.getParameters(element)(6)
+
+      case 'K' =>
 
       case x if x == '*' =>
         println(s"Comment: $element")
@@ -251,7 +276,7 @@ object Main extends App {
   def BuildStamps(): Unit ={
     for (idx <- 1 to elementIterator){
       netList(idx).`type` match {
-        case x if x == "L" =>
+        case "L" =>
           //Numeric integration must deliver G and Z
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
@@ -260,7 +285,7 @@ object Main extends App {
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeX) += g
           admittanceMatrix(netList(idx).nodes.nodeX)(variableIterator+1) += z
 
-        case x if x == "C" =>
+        case "C" =>
           //Numeric integration must deliver G and Z
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeA) += g
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeB) += g
@@ -269,32 +294,32 @@ object Main extends App {
           admittanceMatrix(netList(idx).nodes.nodeA)(variableIterator+1) += z
           admittanceMatrix(netList(idx).nodes.nodeB)(variableIterator+1) -= z
 
-        case x if x == "R" =>
+        case "R" =>
           val conductance = 1/netList(idx).values.head
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeA) += conductance
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeB) += conductance
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeB) -= conductance
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeA) -= conductance
 
-        case x if x == "G" =>
+        case "G" =>
           val conductance = netList(idx).values.head
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeC) += conductance
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeD) += conductance
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeD) -= conductance
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeC) -= conductance
 
-        case x if x == "I" =>
+        case "I" =>
           val current = netList(idx).values.head
           admittanceMatrix(netList(idx).nodes.nodeA)(variableIterator+1) -= current
           admittanceMatrix(netList(idx).nodes.nodeB)(variableIterator+1) += current
 
-        case x if x == "V" =>
+        case "V" =>
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeA) -= 1
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeB) += 1
 
-        case x if x == "E" =>
+        case "E" =>
           val conductance = netList(idx).values.head
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
@@ -303,7 +328,7 @@ object Main extends App {
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) += conductance
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) -= conductance
 
-        case x if x == "F" =>
+        case "F" =>
           val conductance = netList(idx).values.head
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += conductance
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= conductance
@@ -312,7 +337,7 @@ object Main extends App {
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) -= 1
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) += 1
 
-        case x if x == "H" =>
+        case "H" =>
           val conductance = netList(idx).values.head
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeY) += 1
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeY) -= 1
@@ -324,23 +349,25 @@ object Main extends App {
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) += 1
           admittanceMatrix(netList(idx).nodes.nodeY)(netList(idx).nodes.nodeX) += conductance
 
-        case x if x == "$" =>
+        case "$" =>
 
-        case x if x == "O" =>
+        case "O" =>
           admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
           admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) += 1
           admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) -= 1
 
-        case x if x == "N" =>
+        case "N" =>
 
-        case x if x == "DC" =>
+        case "DC" =>
           admittanceMatrix(netList(idx).nodes.nodeX)(variableIterator+1) -= netList(idx).values.head
 
-        case x if x == "SIN" =>
+        case "SIN" =>
 
-        case x if x == "PULSE" =>
+        case "PULSE" =>
 
+        case x: String =>
+          println(s"Unknown type in list -> $x.")
       }
     }
   }
