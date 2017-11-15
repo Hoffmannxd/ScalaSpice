@@ -63,7 +63,10 @@ object Main extends App {
   /**
     *   Lists
     */
-  var netList = ListBuffer[Element]()
+  //TODO Solve compilation errors
+    var netList = List[Element]
+ // var netList = ListBuffer[Element]()
+ // val netList = new Array[Element](maximumElements)
 
   val list: Array[String] = new Array[String](maximumNodes+1)
 
@@ -173,7 +176,7 @@ object Main extends App {
       elementIterator += 1 //don't use netList(0)
       element(0).toUpper match {
         case x if x == 'R' || x == 'I' || x == 'V' =>
-          netList(elementIterator).`type` += element(0)
+          netList(elementIterator).`type` = element(0)
           netList(elementIterator).name += getParameters(element)(0)
           netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
           netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
