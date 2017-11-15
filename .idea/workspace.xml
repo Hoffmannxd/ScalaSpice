@@ -7,25 +7,115 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9b01f94-eeec-4aa7-92ac-64108d29eda3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/Main$$anonfun$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/Main$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/Main$delayedInit$body.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/protocol/Protocols$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/protocol/Protocols$Complex$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/protocol/Protocols$Complex.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/protocol/Protocols$Element$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/protocol/Protocols$Element.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/protocol/Protocols.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/settings/Settings$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/settings/Settings$class.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/settings/Settings.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/utils/Parser$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/utils/Parser.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/spice/src/Main.scala" afterPath="$PROJECT_DIR$/spice/src/main/Main.scala" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/resources/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/test/test.sc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/utils/FileHandler$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/classes/production/spice/utils/FileHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/core/NewtonMethod.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/core/Process.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/core/TrapezoidalRule.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/protocol/Protocols.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/resources/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/test/test.sc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/utils/FileHandler.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/src/utils/Parser.scala" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/Main$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/Main$delayedInit$body.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/protocol/Protocols$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/protocol/Protocols.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/settings/Settings$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/settings/Settings$class.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/classes/settings/Settings.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/pack/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/pack/VERSION" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/pack/lib/scala-library-2.11.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/pack/lib/spice-0.0.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/com.nome.do.projeto/modulo$sources/0.0.1/resolved.xml.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/com.nome.do.projeto/modulo$sources/0.0.1/resolved.xml.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/com.nome.do.projeto/modulo/0.0.1/resolved.xml.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/com.nome.do.projeto/modulo/0.0.1/resolved.xml.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-compile-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-compile.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-docs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-optional.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-plugin.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-provided.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-runtime-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-runtime.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-scala-tool.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-sources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-test-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo$sources-test.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-compile-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-compile.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-docs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-optional.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-plugin.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-provided.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-runtime-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-runtime.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-scala-tool.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-sources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-test-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/com.nome.do.projeto-modulo-test.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/ivy-report.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/ivy-report.xsl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-compile-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-compile.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-docs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-optional.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-plugin.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-provided.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-runtime-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-runtime.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-scala-tool.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-sources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-test-internal.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/reports/scala-spice-spice-test.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/scala-spice/spice/0.0.1/resolved.xml.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/resolution-cache/scala-spice/spice/0.0.1/resolved.xml.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/spice-0.0.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/$global/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/dependencyPositions/$global/streams/update_cache/input_dsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/dependencyPositions/$global/streams/update_cache/output_dsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/ivySbt/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/pack/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/projectDescriptors/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/update/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/update/$global/streams/update_cache/inputs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/update/$global/streams/update_cache/output" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/$global/updateClassifiers/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/$global/$global/discoveredMainClasses/data" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/compile/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/compileIncremental/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/compileIncremental/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/copyResources/$global/streams/copy-resources" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/copyResources/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/internalDependencyClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/managedClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/packageBin/$global/streams/inputs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/packageBin/$global/streams/out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/packageBin/$global/streams/output" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/unmanagedClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/compile/unmanagedJars/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/runtime/unmanagedClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/runtime/unmanagedJars/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/test/externalDependencyClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/test/managedClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/test/unmanagedClasspath/$global/streams/export" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spice/target/streams/test/unmanagedJars/$global/streams/export" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spice/src/core/Process.scala" afterPath="$PROJECT_DIR$/spice/src/core/Process.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spice/src/core/TrapezoidalRule.scala" afterPath="$PROJECT_DIR$/spice/src/core/TrapezoidalRule.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spice/src/main/Main.scala" afterPath="$PROJECT_DIR$/spice/src/main/Main.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spice/src/settings/Settings.scala" afterPath="$PROJECT_DIR$/spice/src/settings/Settings.scala" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/modulo/target/" />
@@ -47,14 +137,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spice/src/main/Main.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2743">
-              <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+            <state relative-caret-position="-4580">
+              <caret line="184" column="82" lean-forward="false" selection-start-line="184" selection-start-column="82" selection-end-line="184" selection-end-column="82" />
               <folding>
-                <element signature="e#608#641#0" expanded="true" />
+                <element signature="e#608#634#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spice.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spice/spice.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dependencies.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Dependencies.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Common.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Common.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/build.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Build.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/Build.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,71 +209,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Protocols.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spice/src/protocol/Protocols.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewtonMethod.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spice/src/core/NewtonMethod.scala">
+      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spice/src/META-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Process.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spice/src/core/Process.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrapezoidalRule.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/spice/src/core/TrapezoidalRule.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spice/src/utils/Parser.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="4" column="51" lean-forward="false" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.sc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spice/src/test/test.sc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileHandler.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spice/src/utils/FileHandler.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -142,8 +222,8 @@
       <file leaf-file-name="Settings.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spice/src/settings/Settings.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -163,6 +243,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>nome</find>
+      <find>Parser.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,21 +266,21 @@
         <option value="$PROJECT_DIR$/spice/src/utils/Utils.scala" />
         <option value="$PROJECT_DIR$/spice/src/utils/Process.scala" />
         <option value="$PROJECT_DIR$/spice/src/core/NewtonRaphson.scala" />
-        <option value="$PROJECT_DIR$/spice/src/settings/Settings.scala" />
-        <option value="$PROJECT_DIR$/spice/src/utils/Parser.scala" />
         <option value="$PROJECT_DIR$/spice/src/test/test.sc" />
-        <option value="$PROJECT_DIR$/spice/src/protocol/Protocols.scala" />
         <option value="$PROJECT_DIR$/spice/src/Main.scala" />
         <option value="$PROJECT_DIR$/spice/src/core/Process.scala" />
-        <option value="$PROJECT_DIR$/spice/src/main/Main.scala" />
         <option value="$PROJECT_DIR$/spice/src/core/TrapezoidalRule.scala" />
+        <option value="$PROJECT_DIR$/spice/src/settings/Settings.scala" />
+        <option value="$PROJECT_DIR$/spice/src/utils/Parser.scala" />
+        <option value="$PROJECT_DIR$/spice/src/protocol/Protocols.scala" />
+        <option value="$PROJECT_DIR$/spice/src/main/Main.scala" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1364" />
-    <option name="width" value="1370" />
-    <option name="height" value="770" />
+    <option name="y" value="42" />
+    <option name="width" value="1364" />
+    <option name="height" value="771" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -216,10 +297,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,13 +328,6 @@
               <item name="scala-spice" type="462c0819:PsiDirectoryNode" />
               <item name="spice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scala-spice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scala-spice" type="462c0819:PsiDirectoryNode" />
-              <item name="spice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -269,21 +342,7 @@
               <item name="scala-spice" type="462c0819:PsiDirectoryNode" />
               <item name="spice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="protocol" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scala-spice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scala-spice" type="462c0819:PsiDirectoryNode" />
-              <item name="spice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scala-spice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scala-spice" type="462c0819:PsiDirectoryNode" />
-              <item name="spice" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="scala-spice" type="b2602c69:ProjectViewProjectNode" />
@@ -293,11 +352,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/spice" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -463,24 +523,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1364" y="4" width="1370" height="766" extended-state="6" />
+    <frame x="-2" y="0" width="1370" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.82398754" sideWeight="0.4425982" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.43957704" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3707165" sideWeight="0.3089124" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09223301" sideWeight="0.31646526" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52117264" sideWeight="0.7969697" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3707165" sideWeight="0.6910876" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09223301" sideWeight="0.68353474" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15861027" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16087614" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -492,7 +553,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -583,29 +643,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/Common.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spice/src/main/scala/Main.scala" />
-    <entry file="file://$PROJECT_DIR$/project/Build.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spice/src/resources/META_INF/MANIFEST.MF" />
-    <entry file="file://$PROJECT_DIR$/project/Dependencies.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.7-sources.jar!/scala/sys/process/ProcessBuilder.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -620,20 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/build.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spice/src/resources/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -641,50 +666,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/test/test.sc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/utils/FileHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/utils/Parser.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="51" lean-forward="false" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/settings/Settings.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simples.net">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/protocol/Protocols.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -697,29 +682,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/core/Process.scala">
+    <entry file="file://$PROJECT_DIR$/spice/src/test/test.sc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="70">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spice/src/main/Main.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2743">
-          <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <element signature="e#608#641#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spice/src/core/TrapezoidalRule.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/core/Process.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/utils/FileHandler.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/utils/Parser.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/protocol/Protocols.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/settings/Settings.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/spice.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Dependencies.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Common.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/build.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Build.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spice/src/main/Main.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4580">
+          <caret line="184" column="82" lean-forward="false" selection-start-line="184" selection-start-column="82" selection-end-line="184" selection-end-column="82" />
+          <folding>
+            <element signature="e#608#634#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

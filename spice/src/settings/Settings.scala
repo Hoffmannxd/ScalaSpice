@@ -2,18 +2,29 @@ package settings
 
 
 trait Settings {
-
+  /**
+    * App and environment parameters
+    */
   val version: String = "0.0.2 - 05/11/2017"
+  val linux: Boolean = true
+  val debug: Boolean = true
 
+  /**
+    * Circuit Bounds
+    */
   val maximumLines: Int = 80
   val maximumName: Int = 11
   val maximumElements: Int  = 50
   val maximumNodes: Int = 50
-  val tolg: Double = math.pow(10, -9)
 
-  val initialVoltage: Double = 1
-  val initialCurrent: Double = 1
-  val maximumIterations: Double = math.pow(10, 4)
+
+  /**
+    * Newton-Raphson linearization with Gmin stepping
+    */
+  val initialVoltage: Int = 1
+  val initialCurrent: Int = 1
+  val maximumTries: Double = math.pow(10, 2)
+  val maximumRandom: Double = math.pow(10, 2)
   val voltageTolerance: Double = math.pow(10, -9)
   val currentTolerance: Double = math.pow(10, -9)
   val conductanceAssistantStart: Int = 1
@@ -23,8 +34,12 @@ trait Settings {
   val minimumDivisor: Int = 1
   val minimumDivisorMultiplier: Int = 1
 
-  val linux: Boolean = true
-  val debug: Boolean = false
+  /**
+    * Math const
+    */
+  val pi: Double =   math.Pi
+  val TOLG: Double = math.pow(10, -9)
+
 
   println("Circuit Analysis parameters loaded")
   if(linux) println("OS Linux formatting") else println("OS Microsoft Windows formatting")
