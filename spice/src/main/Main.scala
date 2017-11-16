@@ -16,10 +16,10 @@ GitHub: https://github.com/Hoffmannxd/scala-spice
 
 
 import settings.Settings._
-
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
 import scala.sys.process._
+import scala.util.Try
 
 /**  === Elements indexing ===
   *  Resistor:                            R <name> <n+> <n-> <R>
@@ -51,7 +51,12 @@ object Main extends App {
   /**
     * Structure
     */
-  case class NodeType(nodeA: Int, nodeB: Int, nodeC: Int, nodeD: Int, nodeX: Int, nodeY: Int) // Must contain all nodes possible
+  case class NodeType(nodeA: Int,
+                      nodeB: Int,
+                      nodeC: Option[Int],
+                      nodeD: Option[Int],
+                      nodeX:  Option[Int],
+                      nodeY: Option[Int]) // Must contain all nodes possible
 
   case class Element(name: String,
                      `type`: String,
@@ -64,9 +69,8 @@ object Main extends App {
     *   Lists
     */
   //TODO Solve compilation errors
-    var netList = List[Element]
- // var netList = ListBuffer[Element]()
- // val netList = new Array[Element](maximumElements)
+
+  var netList = ListBuffer[Element]()
 
   val list: Array[String] = new Array[String](maximumNodes+1)
 
@@ -83,10 +87,11 @@ object Main extends App {
   var numerationCurrent: Int = _
   var numerationTime: Int = _
   var firstIteration: Boolean = _
+  var convergence: Boolean = false
+  var stepIterator: Int = 0
 
-  //TODO Check if really starts with null value
+
   val admittanceMatrix = Array.ofDim[Double](maximumNodes+1, maximumNodes+2)
-
   val currentSolution = new Array[Double](maximumNodes+1)
   val lastSolution = new Array[Double](maximumNodes+1)
 
@@ -97,6 +102,7 @@ object Main extends App {
   var useInitialConditions: Boolean = false
   var useNewtonRaphson: Boolean = false
 
+  // TODO Make sure notation XE-Y works, if need create a parser/regex
   var totalTime : Double = _
   var stepSize : Double = _
   var stepsPerPoint : Double = _
@@ -171,52 +177,94 @@ object Main extends App {
   /**
     * Reading netList and converting to Element objects
     */
+  //Making a builder makes much less verbose
   def GetNetListAndAnalysisParameters(): Unit = {
     listOfElements.foreach(element => {
       elementIterator += 1 //don't use netList(0)
       element(0).toUpper match {
-        case x if x == 'R' || x == 'I' || x == 'V' =>
-          netList(elementIterator).`type` = element(0)
-          netList(elementIterator).name += getParameters(element)(0)
-          netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
-          netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
-          netList(elementIterator).values.head += getParameters(element)(3)
+        case x if x == 'R' =>
+          val `type`  = element(0).toString
+          val name = getParameters(element)(0)
+          val values : List[Double] = List(getParameters(element)(3).toDouble)
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), None, None, None, None)
+          netList += Element(name,`type`, values, nodes)
+
+        case x if x == 'I' || x == 'V' =>{
+          val name = getParameters(element)(0)
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), None, None, None, None)
+          if(isDoubleNumber(getParameters(element)(3))){
+            val `type` = element(0).toString
+            val values: List[Double] = List(getParameters(element)(3).toDouble)
+            netList += Element(name,`type`, values, nodes)
+          } else {
+          getParameters(element)(3).toUpperCase match {
+
+            //TODO optional params verify
+            case "DC" =>
+              val `type` = getParameters(element)(3).toUpperCase
+              val values: List[Double] = List(getParameters(element)(4).toDouble)
+              netList += Element(name,`type`, values, nodes)
+
+
+            //TODO optional params verify
+            case "SIN" =>
+              val `type` = getParameters(element)(3).toUpperCase
+              val values: List[Double] = List(getParameters(element)(4).toDouble,
+                getParameters(element)(5).toDouble,
+                getParameters(element)(6).toDouble,
+                getParameters(element)(7).toDouble,
+                getParameters(element)(8).toDouble,
+                getParameters(element)(9).toDouble,
+                getParameters(element)(10).toDouble
+              )
+              netList += Element(name,`type`, values, nodes)
+
+
+            case "PULSE" =>
+              val `type` = getParameters(element)(3).toUpperCase
+              val values: List[Double] = List(getParameters(element)(4).toDouble,
+                getParameters(element)(5).toDouble,
+                getParameters(element)(6).toDouble,
+                getParameters(element)(7).toDouble,
+                getParameters(element)(8).toDouble,
+                getParameters(element)(9).toDouble,
+                getParameters(element)(10).toDouble,
+                getParameters(element)(10).toDouble
+              )
+              netList += Element(name,`type`, values, nodes)
+
+            case _ =>
+
+          }
+          }
+        }
 
         case x if x == 'L' || x == 'C' =>
-          netList(elementIterator).`type` += element(0)
-          netList(elementIterator).name += getParameters(element)(0)
-          netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
-          netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
-          netList(elementIterator).values.head += getParameters(element)(3)
-          netList(elementIterator).values(1) += getParameters(element)(4) // Initial Condition
+          val `type`  = element(0).toString
+          val name = getParameters(element)(0)
+          val values : List[Double] = List(getParameters(element)(3).toDouble,getParameters(element)(4).toDouble) //<- IC
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), None, None, None, None)
+          netList += Element(name,`type`, values, nodes)
 
         case x if x == 'G' || x == 'E' || x == 'F' || x == 'H' =>
-          netList(elementIterator).`type` += element(0)
-          netList(elementIterator).name += getParameters(element)(0)
-          netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
-          netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
-          netList(elementIterator).nodes.nodeC += Number(getParameters(element)(3))
-          netList(elementIterator).nodes.nodeD += Number(getParameters(element)(4))
-          netList(elementIterator).values.head += getParameters(element)(5)
+          val `type`  = element(0).toString
+          val name = getParameters(element)(0)
+          val values : List[Double] = List(getParameters(element)(5).toDouble)
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), Some(Number(getParameters(element)(3))), Some(Number(getParameters(element)(4))), None, None)
+          netList += Element(name,`type`, values, nodes)
 
         case 'O' =>
-          netList(elementIterator).`type` += element(0)
-          netList(elementIterator).name += getParameters(element)(0)
-          netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
-          netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
-          netList(elementIterator).nodes.nodeC += Number(getParameters(element)(3))
-          netList(elementIterator).nodes.nodeD += Number(getParameters(element)(4))
+          val `type`  = element(0).toString
+          val name = getParameters(element)(0)
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), Some(Number(getParameters(element)(3))), Some(Number(getParameters(element)(4))), None, None)
+          netList += Element(name,`type`, null, nodes)
 
         case '$' =>
-          netList(elementIterator).`type` += element(0)
-          netList(elementIterator).name += getParameters(element)(0)
-          netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
-          netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
-          netList(elementIterator).nodes.nodeC += Number(getParameters(element)(3))
-          netList(elementIterator).nodes.nodeD += Number(getParameters(element)(4))
-          netList(elementIterator).values.head += getParameters(element)(5)
-          netList(elementIterator).values(1) += getParameters(element)(6)
-          netList(elementIterator).values(2) += getParameters(element)(7)
+          val `type`  = element(0).toString
+          val name = getParameters(element)(0)
+          val values : List[Double] = List(getParameters(element)(5).toDouble,getParameters(element)(6).toDouble,getParameters(element)(7).toDouble)
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), Some(Number(getParameters(element)(3))), Some(Number(getParameters(element)(4))), None, None)
+          netList += Element(name,`type`, values, nodes)
 
         /** TODO Implement
           * case 'N' =>
@@ -231,56 +279,11 @@ object Main extends App {
           */
 
         case 'K' =>
-          netList(elementIterator).`type` += element(0)
-          netList(elementIterator).name += getParameters(element)(0)
-          netList(elementIterator).nodes.nodeA += Number(getParameters(element)(1))
-          netList(elementIterator).nodes.nodeB += Number(getParameters(element)(2))
-          netList(elementIterator).nodes.nodeC += Number(getParameters(element)(3))
-          netList(elementIterator).nodes.nodeD += Number(getParameters(element)(4))
-          netList(elementIterator).values.head += getParameters(element)(5)
-
-        //TODO optional params verify
-        case 'D' => // DC Source
-          if (element.substring(0, 1).toUpperCase != "DC") {
-            printf("Unknown element. Aborting analysis.")
-            sys.exit(1)
-          } else {
-            netList(elementIterator).`type` += "DC"
-            netList(elementIterator).values.head += getParameters(element)(1)
-          }
-
-        //TODO optional params verify
-        case 'S' => //SIN Source
-          if (element.substring(0, 2).toUpperCase != "SIN") {
-            printf("Unknown element. Aborting analysis.")
-            sys.exit(1)
-          } else {
-            netList(elementIterator).`type` += "SIN"
-            netList(elementIterator).values.head += getParameters(element)(1)
-            netList(elementIterator).values(1) += getParameters(element)(2)
-            netList(elementIterator).values(2) += getParameters(element)(3)
-            netList(elementIterator).values(3) += getParameters(element)(4)
-            netList(elementIterator).values(4) += getParameters(element)(5)
-            netList(elementIterator).values(5) += getParameters(element)(6)
-            netList(elementIterator).values(6) += getParameters(element)(7)
-          }
-
-        case 'P' => // PULSE Source
-          if (element.substring(0, 4).toUpperCase != "PULSE") {
-            printf("Unknown element. Aborting analysis.")
-            sys.exit(1)
-          } else {
-            netList(elementIterator).`type` += "PULSE"
-            netList(elementIterator).values.head += getParameters(element)(1)
-            netList(elementIterator).values(1) += getParameters(element)(2)
-            netList(elementIterator).values(2) += getParameters(element)(3)
-            netList(elementIterator).values(3) += getParameters(element)(4)
-            netList(elementIterator).values(4) += getParameters(element)(5)
-            netList(elementIterator).values(5) += getParameters(element)(6)
-            netList(elementIterator).values(6) += getParameters(element)(7)
-            netList(elementIterator).values(7) += getParameters(element)(8)
-          }
-
+          val `type`  = element(0).toString
+          val name = getParameters(element)(0)
+          val values : List[Double] = List(getParameters(element)(5).toDouble)
+          val nodes = NodeType(Number(getParameters(element)(1)),Number(getParameters(element)(2)), Some(Number(getParameters(element)(3))), Some(Number(getParameters(element)(4))), None, None)
+          netList += Element(name,`type`, values, nodes)
 
         case '*' =>
           println("°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸\n")
@@ -306,7 +309,7 @@ object Main extends App {
     nodeIterator = variableIterator
     for(idx <- 1 to elementIterator){
       netList(elementIterator).`type`.head match {
-        case x if x == 'V' || x == 'E' || x == 'F' || x == 'O' =>
+        case x if x == 'V' || x == 'E' || x == 'F' || x == 'O' => //TODO Add DC PULSE SIN here?
           variableIterator += 1
           if(variableIterator > maximumNodes){
             println(s"Extra current exceed number of variables allowed, that is $maximumNodes nodes.")
@@ -321,9 +324,16 @@ object Main extends App {
             sys.exit(1)
           }
           list(variableIterator-1) = "jx" + netList(idx).name
-          netList(idx).nodes.nodeX += variableIterator - 1
           list(variableIterator) = "jy" + netList(idx).name
-          netList(idx).nodes.nodeY += variableIterator
+          netList.update(idx,Element(netList(idx).name,
+            netList(idx).`type`,
+            netList(idx).values,
+            NodeType(netList(idx).nodes.nodeA,
+              netList(idx).nodes.nodeB,
+              netList(idx).nodes.nodeC,
+              netList(idx).nodes.nodeD,
+              Some(variableIterator - 1),
+              Some(variableIterator))))
       }
     }
   }
@@ -343,13 +353,66 @@ object Main extends App {
     }
 
     netList.foreach(element => {
-      println(s"Element -> ${element.`type`} | Values -> ${element.values} | Nodes -> ${element.nodes}")
+      println(s"Element -> ${element.`type`} | Name -> ${element.name}| Values -> ${element.values} | Nodes -> ${element.nodes}")
       println(s"$element") // Just test printable
     })
 
     println("°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸\n")
     println(s"This circuit has -> $nodeIterator nodes, $variableIterator variables and $elementIterator elements.\n")
     println("°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸°º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸\n")
+  }
+
+  def StartTimeAnalysis(): Unit = {
+    firstIteration = true
+
+    //TODO check if this fraction is int
+    for (idxOne <- 0 to (totalTime/stepSize).toInt){
+
+      val internalStep: Int = 0
+
+      while(internalStep<stepsPerPoint){
+        while(!convergence){
+          if(tryCounter >= maximumTries && randomCounter < maximumRandom){
+            for(idxTwo <- 1 to variableIterator) lastSolution(idxTwo) = math.random
+            randomCounter += 1
+            tryCounter = 0
+          }
+          if(randomCounter >= maximumRandom){
+            println("Simulator reached maximum randomizations, any valid solution found, please change circuit or analysis parameters")
+            sys.exit(1)
+          }
+          BuildStamps()
+          Solve()
+          if(useNewtonRaphson){
+            for(idxThree <- 1 to variableIterator){
+              math.abs(lastSolution(idxThree)   -   admittanceMatrix(idxThree)(variableIterator+1)) match {
+                case error if error > errorTolerance =>
+                  tryCounter += 1
+                case error =>
+                  convergence = true
+              }
+
+            }
+          }
+
+          /**
+            * Endpoint of iteraction, retry: update Last Solution.
+            */
+          for(idxFour <- 1 to variableIterator){
+            lastSolution(idxFour) = admittanceMatrix(idxFour)(variableIterator+1)
+            currentSolution(idxFour) = admittanceMatrix(idxFour)(variableIterator+1)
+          }
+          // lastSolution = admitt to array 1123
+
+          //TODO writeRegister checking state
+
+
+
+        }
+
+      }
+    }
+
   }
 
 
@@ -539,11 +602,13 @@ object Main extends App {
 
   def writeLine()={}
 
+  def isDoubleNumber(str: String): Boolean = Try(str.toDouble).isSuccess
+
 
 }
 
 /**
   * Improvements
   *
-  * Logger, Time execution details, plotter, counter, EDFIL, interface
+  * Logger, Time execution details, plotter, counter, EDFIL, interface, JNI
   */

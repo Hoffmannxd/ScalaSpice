@@ -5,7 +5,7 @@ trait Settings {
   /**
     * App and environment parameters
     */
-  val version: String = "0.0.2 - 05/11/2017"
+  val version: String = "0.0.4 - 15/11/2017"
   val linux: Boolean = true
   val debug: Boolean = true
 
@@ -33,6 +33,7 @@ trait Settings {
   val conductanceAssistantInitialMultiplier: Int = 1
   val minimumDivisor: Int = 1
   val minimumDivisorMultiplier: Int = 1
+  val errorTolerance: Double = math.pow(10, -9)
 
   /**
     * Math const
