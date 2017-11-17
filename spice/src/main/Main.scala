@@ -86,12 +86,17 @@ object Main extends App {
 
   var numerationCurrent: Int = _
   var numerationTime: Int = _
-  var firstIteration: Boolean = _
+
+  var firstIteration: Boolean = true
+  var startTime: Boolean = true
+
   var convergence: Boolean = false
   var stepIterator: Int = 0
 
-
-  val admittanceMatrix = Array.ofDim[Double](maximumNodes+1, maximumNodes+2)
+  /**
+    * Matrix that store information about nodes, representing Modified Nodal Analysis
+    */
+  val systemMatrix = Array.ofDim[Double](maximumNodes+1, maximumNodes+2)
   val currentSolution = new Array[Double](maximumNodes+1)
   val lastSolution = new Array[Double](maximumNodes+1)
 
@@ -99,8 +104,10 @@ object Main extends App {
   /**
     * Analysis parameter
     */
+  // Obs these parameters are for debugging seeing unit testing
   var useInitialConditions: Boolean = false
   var useNewtonRaphson: Boolean = false
+  var useGMinStepInitializationMethod: Boolean = false
 
   // TODO Make sure notation XE-Y works, if need create a parser/regex
   var totalTime : Double = _
@@ -385,7 +392,7 @@ object Main extends App {
           Solve()
           if(useNewtonRaphson){
             for(idxThree <- 1 to variableIterator){
-              math.abs(lastSolution(idxThree)   -   admittanceMatrix(idxThree)(variableIterator+1)) match {
+              math.abs(lastSolution(idxThree)   -   systemMatrix(idxThree)(variableIterator+1)) match {
                 case error if error > errorTolerance =>
                   tryCounter += 1
                 case error =>
@@ -399,16 +406,21 @@ object Main extends App {
             * Endpoint of iteraction, retry: update Last Solution.
             */
           for(idxFour <- 1 to variableIterator){
-            lastSolution(idxFour) = admittanceMatrix(idxFour)(variableIterator+1)
-            currentSolution(idxFour) = admittanceMatrix(idxFour)(variableIterator+1)
+            lastSolution(idxFour) = systemMatrix(idxFour)(variableIterator+1)
+            currentSolution(idxFour) = systemMatrix(idxFour)(variableIterator+1)
           }
-          // lastSolution = admitt to array 1123
+          // lastSolution =
 
-          //TODO writeRegister checking state
+          //TODO writeRegister checking state === ! === increment stepIterator and time += step/stepSize
+          //InitializeOutputFile()
+          //WriteRegister()
 
 
 
         }
+
+        startTime = false
+        //Already passed throught
 
       }
     }
@@ -455,16 +467,16 @@ object Main extends App {
     for (idxI <- 1 to variableIterator){
       idxA = idxI
       for(idxL <- idxI to variableIterator){
-        if(Math.abs(admittanceMatrix(idxL)(idxI)) > Math.abs(idxT)){
+        if(Math.abs(systemMatrix(idxL)(idxI)) > Math.abs(idxT)){
           idxA = idxL
-          idxT = admittanceMatrix(idxL)(idxI)
+          idxT = systemMatrix(idxL)(idxI)
         }
       }
       if(idxI != idxA){
         for(idxL <- 1 to variableIterator){
-          idxP = admittanceMatrix(idxI)(idxL)
-          admittanceMatrix(idxI)(idxL) = admittanceMatrix(idxA)(idxL)
-          admittanceMatrix(idxA)(idxL) = idxP
+          idxP = systemMatrix(idxI)(idxL)
+          systemMatrix(idxI)(idxL) = systemMatrix(idxA)(idxL)
+          systemMatrix(idxA)(idxL) = idxP
         }
       }
       if(Math.abs(idxT) < TOLG){
@@ -472,12 +484,12 @@ object Main extends App {
         sys.exit(1)
       }
       for(idxJ <- variableIterator+1 to (0, -1)){
-        admittanceMatrix(idxI)(idxJ) /= idxT //TODO Check
-        idxP=admittanceMatrix(idxI)(idxJ)
+        systemMatrix(idxI)(idxJ) /= idxT //TODO Check
+        idxP=systemMatrix(idxI)(idxJ)
         if(idxP != 0){
           for (idxL <- 1 to variableIterator){
             if(idxL != idxI){
-              admittanceMatrix(idxL)(idxI) -= admittanceMatrix(idxL)(idxI)*idxP
+              systemMatrix(idxL)(idxI) -= systemMatrix(idxL)(idxI)*idxP
             }
           }
         }
@@ -485,7 +497,7 @@ object Main extends App {
     }
   }
 
-  //TODO How L may have X node?
+
   /**
     * Build stamps to each element
     */
@@ -493,90 +505,143 @@ object Main extends App {
     for (idx <- 1 to elementIterator){
       netList(idx).`type` match {
         case "L" =>
-          //Numeric integration must deliver G and Z
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeA) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeB) += 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeX) += g
-          admittanceMatrix(netList(idx).nodes.nodeX)(variableIterator+1) += z
+          /**
+            * Trapezoidal rule for inductor
+            */
+          val conductance = if (startTime){
+            netList(idx).values.head/(stepSize/minimumDivisor)
+          } else {
+            netList(idx).values.head/(0.5*(stepSize/stepIterator)/netList(idx).values.head)
+          }
+            val voltage = if(startTime){
+              if(useInitialConditions) return netList(idx).values(1)/(stepSize/stepIterator)
+              return 0
+            } else {
+              if(firstIteration){
+                netList.update(idx, Element(netList(idx).name,
+                  netList(idx).`type`,
+                  List(netList(idx).values.head,
+                    currentSolution(netList(idx).nodes.nodeX.get), // Updating initial condition
+                    currentSolution(netList(idx).nodes.nodeX.get),
+                    currentSolution(netList(idx).nodes.nodeA) - currentSolution(netList(idx).nodes.nodeB)),
+                netList(idx).nodes))
+
+                netList(idx).values(2)
+
+              } else { // TODO possible null exception
+                (2*netList(idx).values.head)/(stepSize/stepIterator)*netList(idx).values(1)
+                + netList(idx).values(2)
+              }
+            }
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX.get) = 1
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX.get) = -1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeA) = 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeB) = -1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeX.get) += conductance
+          systemMatrix(netList(idx).nodes.nodeX.get)(variableIterator+1) -= voltage
 
         case "C" =>
-          //Numeric integration must deliver G and Z
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeA) += g
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeB) += g
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeB) -= g
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeA) -= g
-          admittanceMatrix(netList(idx).nodes.nodeA)(variableIterator+1) += z
-          admittanceMatrix(netList(idx).nodes.nodeB)(variableIterator+1) -= z
+          /**
+            * Trapezoidal rule for capacitor
+            */
+          val conductance = if (startTime){
+            (stepSize/minimumDivisor)/netList(idx).values.head
+          } else {
+            0.5*(stepSize/stepIterator)/netList(idx).values.head
+          }
+          val current = if(startTime){
+            if(useInitialConditions) return netList(idx).values(1)
+            return 0
+          } else {
+            if(firstIteration){
+              netList.update(idx, Element(netList(idx).name,
+                netList(idx).`type`,
+                List(netList(idx).values.head,
+                  currentSolution(netList(idx).nodes.nodeA) - currentSolution(netList(idx).nodes.nodeB),
+                  currentSolution(netList(idx).nodes.nodeA) - currentSolution(netList(idx).nodes.nodeB)),
+                netList(idx).nodes))
+
+                netList(idx).values(1)
+            } else {
+              currentSolution(netList(idx).nodes.nodeX.get)*(stepSize/stepIterator)/(2*netList(idx).values.head)
+              + netList(idx).values(1)
+            }
+          }
+          // Check with 2016.1 if stamps are correctly here
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX.get) = 1
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX.get) = -1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeA) = 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeB) = -1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeX.get) -= conductance
+          systemMatrix(netList(idx).nodes.nodeX.get)(variableIterator+1) += current
 
         case "R" =>
           val conductance = 1/netList(idx).values.head
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeA) += conductance
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeB) += conductance
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeB) -= conductance
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeA) -= conductance
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeA) += conductance
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeB) += conductance
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeB) -= conductance
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeA) -= conductance
 
         case "G" =>
           val conductance = netList(idx).values.head
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeC) += conductance
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeD) += conductance
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeD) -= conductance
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeC) -= conductance
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeC.get) += conductance
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeD.get) += conductance
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeD.get) -= conductance
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeC.get) -= conductance
 
         case "I" =>
           val current = netList(idx).values.head
-          admittanceMatrix(netList(idx).nodes.nodeA)(variableIterator+1) -= current
-          admittanceMatrix(netList(idx).nodes.nodeB)(variableIterator+1) += current
+          systemMatrix(netList(idx).nodes.nodeA)(variableIterator+1) -= current
+          systemMatrix(netList(idx).nodes.nodeB)(variableIterator+1) += current
 
         case "V" =>
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeA) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeB) += 1
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX.get) += 1
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeA) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeB) += 1
 
         case "E" =>
           val conductance = netList(idx).values.head
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeA) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeB) += 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) += conductance
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) -= conductance
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX.get) += 1
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeA) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeB) += 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeC.get) += conductance
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeD.get) -= conductance
 
         case "F" =>
           val conductance = netList(idx).values.head
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += conductance
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= conductance
-          admittanceMatrix(netList(idx).nodes.nodeC)(netList(idx).nodes.nodeX) += 1
-          admittanceMatrix(netList(idx).nodes.nodeD)(netList(idx).nodes.nodeX) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) += 1
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX.get) += conductance
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX.get) -= conductance
+          systemMatrix(netList(idx).nodes.nodeC.get)(netList(idx).nodes.nodeX.get) += 1
+          systemMatrix(netList(idx).nodes.nodeD.get)(netList(idx).nodes.nodeX.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeC.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeD.get) += 1
 
         case "H" =>
           val conductance = netList(idx).values.head
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeY) += 1
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeY) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeC)(netList(idx).nodes.nodeX) += 1
-          admittanceMatrix(netList(idx).nodes.nodeD)(netList(idx).nodes.nodeX) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeY)(netList(idx).nodes.nodeA) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeY)(netList(idx).nodes.nodeB) += 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) += 1
-          admittanceMatrix(netList(idx).nodes.nodeY)(netList(idx).nodes.nodeX) += conductance
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeY.get) += 1
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeY.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeC.get)(netList(idx).nodes.nodeX.get) += 1
+          systemMatrix(netList(idx).nodes.nodeD.get)(netList(idx).nodes.nodeX.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeY.get)(netList(idx).nodes.nodeA) -= 1
+          systemMatrix(netList(idx).nodes.nodeY.get)(netList(idx).nodes.nodeB) += 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeC.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeD.get) += 1
+          systemMatrix(netList(idx).nodes.nodeY.get)(netList(idx).nodes.nodeX.get) += conductance
 
         case "$" =>
 
         case "O" =>
-          admittanceMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX) += 1
-          admittanceMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX) -= 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeC) += 1
-          admittanceMatrix(netList(idx).nodes.nodeX)(netList(idx).nodes.nodeD) -= 1
+          systemMatrix(netList(idx).nodes.nodeA)(netList(idx).nodes.nodeX.get) += 1
+          systemMatrix(netList(idx).nodes.nodeB)(netList(idx).nodes.nodeX.get) -= 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeC.get) += 1
+          systemMatrix(netList(idx).nodes.nodeX.get)(netList(idx).nodes.nodeD.get) -= 1
 
         case "N" =>
 
         case "DC" =>
-          admittanceMatrix(netList(idx).nodes.nodeX)(variableIterator+1) -= netList(idx).values.head
+          systemMatrix(netList(idx).nodes.nodeX.get)(variableIterator+1) -= netList(idx).values.head
 
         case "SIN" =>
 
