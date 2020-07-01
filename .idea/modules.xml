@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-spice.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-spice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spice/spice.iml" filepath="$PROJECT_DIR$/spice/spice.iml" />
-    </modules>
-  </component>
-</project>
